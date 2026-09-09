@@ -1,5 +1,5 @@
 context:
-  version: "3.1.4"
+  version: "3.1.5"
 
 package:
   name: tomviz-pipeline
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/t/tomviz_pipeline/tomviz_pipeline-${{ version }}.tar.gz
-  sha256: 2947f620ca3ea5dcced3722efac3140dd9c8ade266ab1143679dd0ae87db3f95
+  sha256: 19a30a07810d86eee79f586fb45b0bf9bd00024448395d64b3f805cbf48464ee
 
 build:
   number: 0
