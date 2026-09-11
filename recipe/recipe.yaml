@@ -10,7 +10,7 @@ source:
   sha256: 4125e9e52094b1dbdbd52c7985a82e3111740e514a335519543dd97f1e0dd055
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
   python:
@@ -37,8 +37,45 @@ tests:
       python_version:
         - ${{ python_min }}.*
         - "*"
+
+  # noarch entry points are generated at install time, so there is no
+  # script file in the package to check; `tomviz-pipeline --version`
+  # below covers that end.
+  - package_contents:
+      site_packages:
+        - tomviz_pipeline/cli.py
+        - tomviz_pipeline/core/pipeline.py
+
+  # The upstream sdist ships its test suite, so run the real thing
+  # against the installed package. This covers the entry point, the
+  # external-Python subprocess path that tomviz uses, and the VTK
+  # interop, none of which the import test touches. Note that
+  # pyproject.toml is not copied here, so the strict
+  # `error::DeprecationWarning` filter upstream uses does not apply:
+  # a deprecation in a new numpy/vtk will not fail the package build.
   - script:
+      - tomviz-pipeline --version
       - tomviz-pipeline --help
+      - pytest -v tests
+    requirements:
+      run:
+        - python ${{ python_min }}.*
+        - pytest
+        - vtk
+    files:
+      source:
+        - tests/**
+
+  # Same suite on the newest Python the solver will give us, without
+  # vtk, so a new Python release breaks CI here before it breaks users.
+  - script:
+      - pytest -v tests
+    requirements:
+      run:
+        - pytest
+    files:
+      source:
+        - tests/**
 
 about:
   homepage: https://github.com/openchemistry/tomviz-pipeline
