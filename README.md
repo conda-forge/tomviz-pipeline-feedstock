@@ -45,10 +45,10 @@ Current release info
 Installing tomviz-pipeline
 ==========================
 
-Installing `tomviz-pipeline` from the `conda-forge/label/tomviz_pipeline_dev` channel can be achieved by adding `conda-forge/label/tomviz_pipeline_dev` to your channels with:
+Installing `tomviz-pipeline` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
-conda config --add channels conda-forge/label/tomviz_pipeline_dev
+conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
@@ -94,7 +94,7 @@ It is possible to list all of the versions of `tomviz-pipeline` available on you
 <summary>With conda</summary>
 
 ```
-conda search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
+conda search tomviz-pipeline --channel conda-forge
 ```
 
 </details>
@@ -103,7 +103,7 @@ conda search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
 <summary>With mamba</summary>
 
 ```
-mamba search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
+mamba search tomviz-pipeline --channel conda-forge
 ```
 
 </details>
@@ -112,7 +112,7 @@ mamba search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
 <summary>With pixi</summary>
 
 ```
-pixi search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
+pixi search tomviz-pipeline --channel conda-forge
 ```
 
 </details>
@@ -122,13 +122,13 @@ pixi search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
+mamba repoquery search tomviz-pipeline --channel conda-forge
 
 # List packages depending on `tomviz-pipeline`:
-mamba repoquery whoneeds tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
+mamba repoquery whoneeds tomviz-pipeline --channel conda-forge
 
 # List dependencies of `tomviz-pipeline`:
-mamba repoquery depends tomviz-pipeline --channel conda-forge/label/tomviz_pipeline_dev
+mamba repoquery depends tomviz-pipeline --channel conda-forge
 ```
 
 </details>
